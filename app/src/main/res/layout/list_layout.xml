@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_gradient">
+
+    <View
+        android:id="@+id/equipmentDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_grey"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size_10"
+        android:padding="@dimen/size_16">
+
+        <TextView
+            android:id="@+id/rowtitle"
+            android:layout_width="@dimen/no_dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rowTitle"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/size_20"
+            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptions"
+            android:layout_width="@dimen/no_dp"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintEnd_toStartOf="@id/imageUrl"
+            app:layout_constraintStart_toStartOf="@id/rowtitle"
+            app:layout_constraintTop_toBottomOf="@id/rowtitle" />
+
+        <ImageView
+            android:id="@+id/imageUrl"
+            android:layout_width="@dimen/size_150"
+            android:layout_height="@dimen/size_100"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
+            app:layout_constraintStart_toEndOf="@id/descriptions"
+            app:layout_constraintTop_toTopOf="@id/descriptions" />
+
+        <ImageView
+            android:id="@+id/arrowIcon"
+            android:layout_width="@dimen/size_28"
+            android:layout_height="@dimen/size_28"
+            android:layout_marginLeft="@dimen/size_10"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="@id/imageUrl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rowtitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

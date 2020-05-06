@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TelstraMVVM</string>
+    <string name="noData">No Data</string>
+    <string name="noDescription">No Description</string>
+    <string name="rowTitle" >row title</string>
+    <string name="description" >description</string>
+    <string name="imageUrl" >imageurl</string>
+
+</resources>

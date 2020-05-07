@@ -4,7 +4,7 @@
     <string name="noDescription">No Description</string>
     <string name="rowTitle" >row title</string>
     <string name="description" >description</string>
-    <string name="uncaughtexception" >UnCaughtException</string>
+    <string name="somethingwentwrong" >somethingwentwrong</string>
     <string name="noconnectivity" >Please check your internet connectivity and Try again.</string>
 
 

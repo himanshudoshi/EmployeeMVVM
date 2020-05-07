@@ -6,23 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.telstra.telstramvvm.R
-import com.telstra.telstramvvm.data.model.FactsItem
 import kotlinx.android.synthetic.main.item_layout.view.descriptions
 import kotlinx.android.synthetic.main.item_layout.view.imageUrl
 import kotlinx.android.synthetic.main.item_layout.view.rowtitle
+import com.bumptech.glide.Glide
+import com.telstra.telstramvvm.R
+import com.telstra.telstramvvm.data.model.FactsItem
 
-class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
+class FactsAdapter(private val context: Context) :
+    RecyclerView.Adapter<FactsAdapter.FactViewHolder>() {
 
     private var listFactsItem: List<FactsItem> = ArrayList()
 
     /** @Method initializing view and returning/inflating view  . */
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactViewHolder {
 
         val view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
-        return ViewHolder(view, context)
+        return FactViewHolder(view, context)
     }
 
     /** @Method return item count . */
@@ -31,7 +32,7 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
     }
 
     /** @Method data binding in each element . */
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FactViewHolder, position: Int) {
 
         holder.bindView(listFactsItem[position])
     }
@@ -44,7 +45,8 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
     }
 
     /** @Method return view holder . */
-    class ViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {
+    class FactViewHolder(itemView: View, private val context: Context) :
+        RecyclerView.ViewHolder(itemView) {
 
         fun bindView(factsItem: FactsItem) {
 
@@ -71,7 +73,7 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
                     } catch (e: Exception) {
                         Toast.makeText(
                             context,
-                            context.getString(R.string.uncaughtexception),
+                            context.getString(R.string.somethingwentwrong),
                             Toast.LENGTH_SHORT
                         )?.show()
                     }
@@ -83,15 +85,13 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
                             .centerCrop()
                             .placeholder(R.drawable.ic_no_image)
                             .into(itemView.imageUrl)
+                    } catch (e: Exception) {
+                        Toast.makeText(
+                            context,
+                            context.getString(R.string.somethingwentwrong),
+                            Toast.LENGTH_SHORT
+                        )?.show()
                     }
-                  catch (e:Exception)
-                  {
-                      Toast.makeText(
-                          context,
-                          context.getString(R.string.uncaughtexception),
-                          Toast.LENGTH_SHORT
-                      )?.show()
-                  }
                 }
             }
         }

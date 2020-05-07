@@ -4,7 +4,6 @@
     <string name="noDescription">No Description</string>
     <string name="rowTitle" >row title</string>
     <string name="description" >description</string>
-    <string name="imageUrl" >imageurl</string>
     <string name="uncaughtexception" >UnCaughtException</string>
 
 </resources>

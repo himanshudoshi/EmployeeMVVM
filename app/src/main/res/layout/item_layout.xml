@@ -1,97 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/card_gradient"
-    android:orientation="vertical">
+    android:background="@drawable/card_gradient">
 
-    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size_5"
-        card_view:cardCornerRadius="@dimen/size_5"
-        card_view:cardElevation="@dimen/size_5">
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_grey"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size_10"
+        android:padding="@dimen/size_16">
+
+        <TextView
+            android:id="@+id/rowtitle"
+            android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/card_gradient"
-            android:baselineAligned="false"
+            android:text="@string/rowTitle"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/txt_Size_20"
+            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            android:orientation="horizontal"
-            android:weightSum="2">
+        <TextView
+            android:id="@+id/descriptions"
+            android:layout_width="@dimen/no_dp"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintEnd_toStartOf="@id/imageUrl"
+            app:layout_constraintStart_toStartOf="@id/rowtitle"
+            app:layout_constraintTop_toBottomOf="@id/rowtitle" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/size_5"
+        <ImageView
+            android:id="@+id/imageUrl"
+            android:layout_width="@dimen/size_150"
+            android:layout_height="@dimen/size_100"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
+            app:layout_constraintStart_toEndOf="@id/descriptions"
+            app:layout_constraintTop_toTopOf="@id/descriptions" />
 
-                android:layout_marginLeft="@dimen/size_5"
-                android:layout_marginTop="@dimen/size_5"
-                android:layout_marginEnd="@dimen/size_5"
-                android:layout_marginRight="@dimen/size_5"
-                android:layout_marginBottom="@dimen/size_5"
-                android:layout_weight="0.1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/rowtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_title"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/size_16"
-                    android:textStyle="bold"
-                    android:typeface="sans" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/rowtitle"
-                    android:layout_marginTop="@dimen/size_2"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <TextView
-                        android:id="@+id/descriptions"
-                        android:layout_width="@dimen/size_300"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.8"
-                        android:textColor="@android:color/black"
-                        android:textIsSelectable="true"
-                        android:textSize="@dimen/size_16"
-                        android:typeface="sans" />
-
-                    <ImageView
-                        android:id="@+id/imageUrl"
-                        android:layout_width="@dimen/size_150"
-                        android:layout_height="@dimen/size_100"
-                        android:layout_weight="1.2"
-                        android:contentDescription="TODO"
-                        android:src="@mipmap/ic_launcher" />
-                </LinearLayout>
+        <ImageView
+            android:id="@+id/arrowIcon"
+            android:layout_width="@dimen/size_28"
+            android:layout_height="@dimen/size_28"
+            android:layout_marginLeft="@dimen/size_10"
+            android:src="@drawable/arrow_right"
+            app:layout_constraintBottom_toBottomOf="@id/imageUrl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/rowtitle"
+            android:layout_marginStart="@dimen/size_10" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-
-                android:layout_weight="1.9">
-
-                <ImageView
-                    android:id="@+id/arrowIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:contentDescription="TODO"
-                    android:src="@drawable/arrow_right"
-                    tools:ignore="UnusedIds" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

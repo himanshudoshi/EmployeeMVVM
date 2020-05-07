@@ -33,7 +33,7 @@ class FactsDetailActivity : AppCompatActivity() {
 
         viewModel.saveFacts()
 
-        val linearLayout: LinearLayoutManager = LinearLayoutManager(this)
+        val linearLayout = LinearLayoutManager(this)
         recycler_view.layoutManager = linearLayout
         val adapter = FactsAdapter(context = this)
         recycler_view.adapter = adapter
@@ -41,7 +41,7 @@ class FactsDetailActivity : AppCompatActivity() {
             viewModel.saveFacts()
 
         }
-        viewModel.getFactsFromDb().observe(this, Observer {
+        viewModel.getFactsFromDb().observe(this, Observer { it ->
 
             it?.let { it ->
                 supportActionBar?.title = it.title

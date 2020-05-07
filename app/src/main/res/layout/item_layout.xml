@@ -62,5 +62,4 @@
             android:layout_marginStart="@dimen/size_10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

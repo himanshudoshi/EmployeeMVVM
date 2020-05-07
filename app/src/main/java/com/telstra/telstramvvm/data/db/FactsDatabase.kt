@@ -8,6 +8,9 @@ import androidx.room.TypeConverters
 import com.telstra.telstramvvm.data.model.Facts
 import com.telstra.telstramvvm.utils.Converters
 
+/**
+ * Room Database creation and create singlton
+ */
 @Database(
 
     entities = [Facts::class],

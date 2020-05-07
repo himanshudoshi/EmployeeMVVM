@@ -8,9 +8,10 @@ import com.telstra.telstramvvm.data.repository.FactsRepository
 import com.telstra.telstramvvm.utils.ApiException
 import com.telstra.telstramvvm.utils.Coroutines
 import com.telstra.telstramvvm.utils.NoInternetException
-
+/**
+ *  Fetch fact list from a repository
+ */
 class FactsViewModel(private val factsRepository: FactsRepository) : ViewModel() {
-
 
     fun saveFacts() {
 

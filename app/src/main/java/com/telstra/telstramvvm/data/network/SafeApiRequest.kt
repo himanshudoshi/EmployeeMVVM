@@ -8,6 +8,9 @@ import org.json.JSONObject
 import retrofit2.Response
 import java.lang.StringBuilder
 
+/**
+ * generic class for ApiRequests
+ */
 abstract class SafeApiRequest {
 
     suspend fun <T : Any> apiRequest(call: suspend () -> Response<T>): T {

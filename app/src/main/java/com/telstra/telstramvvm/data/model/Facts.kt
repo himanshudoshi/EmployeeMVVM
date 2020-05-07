@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
+/**
+ * Pojo class
+ */
 const val PRIMARY_KEY = 0
 
 @Entity

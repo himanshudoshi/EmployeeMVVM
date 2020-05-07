@@ -4,6 +4,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * singleton class for coroutines
+ */
 object Coroutines {
 
 

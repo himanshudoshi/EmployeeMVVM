@@ -7,6 +7,9 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.telstra.telstramvvm.data.model.Facts
 
+/**
+ * SQL query
+ */
 @Dao
 interface FactsDao {
 

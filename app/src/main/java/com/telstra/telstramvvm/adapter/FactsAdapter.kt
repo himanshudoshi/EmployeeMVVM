@@ -77,11 +77,21 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
                     }
                 }
                 else -> {
-                    Glide.with(context)
-                        .load(aUrl)
-                        .centerCrop()
-                        .placeholder(R.drawable.ic_no_image)
-                        .into(itemView.imageUrl)
+                    try {
+                        Glide.with(context)
+                            .load(aUrl)
+                            .centerCrop()
+                            .placeholder(R.drawable.ic_no_image)
+                            .into(itemView.imageUrl)
+                    }
+                  catch (e:Exception)
+                  {
+                      Toast.makeText(
+                          context,
+                          context.getString(R.string.uncaughtexception),
+                          Toast.LENGTH_SHORT
+                      )?.show()
+                  }
                 }
             }
         }

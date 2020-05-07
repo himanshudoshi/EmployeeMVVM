@@ -17,7 +17,7 @@ data class Facts(
     @SerializedName("title")
     val title: String = "",
     @SerializedName("rows")
-    val rows: List<RowsItem>?
+    val rows: List<FactsItem>?
 ) {
     @PrimaryKey(autoGenerate = true)
     var id = PRIMARY_KEY
@@ -25,6 +25,6 @@ data class Facts(
     companion object {
 
         @Ignore
-        val messageOptionListType: Type = object : TypeToken<List<RowsItem>>() {}.type
+        val messageOptionListType: Type = object : TypeToken<List<FactsItem>>() {}.type
     }
 }

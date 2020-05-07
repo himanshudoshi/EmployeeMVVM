@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.telstra.telstramvvm.R
 import com.telstra.telstramvvm.adapter.FactsAdapter
 import com.telstra.telstramvvm.data.db.FactsDatabase
-import com.telstra.telstramvvm.data.model.RowsItem
+import com.telstra.telstramvvm.data.model.FactsItem
 import com.telstra.telstramvvm.data.network.FactsApi
 import com.telstra.telstramvvm.data.repository.FactsRepository
 import com.telstra.telstramvvm.viewmodel.FactsViewModel
@@ -52,7 +52,7 @@ class FactsDetailActivity : AppCompatActivity() {
             it?.let { it ->
                 supportActionBar?.title = it.title
                 it.rows?.let {
-                    adapter.setList(it as ArrayList<RowsItem>)
+                    adapter.setList(it as ArrayList<FactsItem>)
                     progressBar.visibility = ProgressBar.GONE
                     swipeRefreshLayout.isRefreshing = false
                 }

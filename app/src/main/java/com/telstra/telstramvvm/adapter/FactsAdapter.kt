@@ -8,14 +8,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.telstra.telstramvvm.R
-import com.telstra.telstramvvm.data.model.RowsItem
+import com.telstra.telstramvvm.data.model.FactsItem
 import kotlinx.android.synthetic.main.item_layout.view.descriptions
 import kotlinx.android.synthetic.main.item_layout.view.imageUrl
 import kotlinx.android.synthetic.main.item_layout.view.rowtitle
 
 class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAdapter.ViewHolder>() {
 
-    private var listRowsItem: List<RowsItem> = ArrayList()
+    private var listFactsItem: List<FactsItem> = ArrayList()
 
     /** @Method initializing view and returning/inflating view  . */
 
@@ -27,40 +27,40 @@ class FactsAdapter(private val context: Context) : RecyclerView.Adapter<FactsAda
 
     /** @Method return item count . */
     override fun getItemCount(): Int {
-        return listRowsItem.size
+        return listFactsItem.size
     }
 
     /** @Method data binding in each element . */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.bindView(listRowsItem[position])
+        holder.bindView(listFactsItem[position])
     }
 
     /** @Method set result in list. */
 
-    fun setList(items: ArrayList<RowsItem>) {
-        listRowsItem = items
+    fun setList(items: ArrayList<FactsItem>) {
+        listFactsItem = items
         notifyDataSetChanged()
     }
 
     /** @Method return view holder . */
     class ViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindView(rowsItem: RowsItem) {
+        fun bindView(factsItem: FactsItem) {
 
             when {
-                !rowsItem.title.isNullOrEmpty() -> itemView.rowtitle.text = rowsItem.title
+                !factsItem.title.isNullOrEmpty() -> itemView.rowtitle.text = factsItem.title
                 else -> itemView.rowtitle.text = context.getString(R.string.noData)
             }
             when {
-                !rowsItem.description.isNullOrEmpty() -> itemView.descriptions.text =
-                    rowsItem.description
+                !factsItem.description.isNullOrEmpty() -> itemView.descriptions.text =
+                    factsItem.description
                 else -> itemView.descriptions.text = context.getString(R.string.noDescription)
             }
 
-            val aUrl: String = rowsItem.imageHref!!.replace("http", "https")
+            val aUrl: String = factsItem.imageHref!!.replace("http", "https")
             when {
-                !rowsItem.imageHref.isNullOrEmpty() -> {
+                !factsItem.imageHref.isNullOrEmpty() -> {
                     try {
                         Glide.with(context)
                             .load(aUrl)

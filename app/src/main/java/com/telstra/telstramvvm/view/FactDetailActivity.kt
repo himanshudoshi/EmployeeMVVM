@@ -1,8 +1,15 @@
 package com.telstra.telstramvvm.view
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ProgressBar
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +40,18 @@ class FactsDetailActivity : AppCompatActivity() {
         // initialize viewmodel
         val viewModel = ViewModelProvider(this, factory).get(FactsViewModel::class.java)
         // show data from Viewmodel to UI
-        viewModel.saveFacts()
+if(isNetworkAvailable(applicationContext)) {
+    viewModel.saveFacts()
+}else
+{
+    Toast.makeText(
+        applicationContext,
+        applicationContext.getString(R.string.noconnectivity),
+        Toast.LENGTH_SHORT
+    )?.show()
+    progressBar.visibility = ProgressBar.GONE
+
+}
         val linearLayout = LinearLayoutManager(this)
         recycler_view.layoutManager = linearLayout
         val adapter = FactsAdapter(context = this)
@@ -60,5 +78,32 @@ class FactsDetailActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    fun isNetworkAvailable(context: Context?): Boolean {
+        if (context == null) return false
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            val capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                when {
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                        return true
+                    }
+                    capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                        return true
+                    }
+                }
+            }
+        } else {
+            val activeNetworkInfo = connectivityManager.activeNetworkInfo
+            if (activeNetworkInfo != null && activeNetworkInfo.isConnected) {
+                return true
+            }
+        }
+        return false
     }
 }

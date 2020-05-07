@@ -5,5 +5,7 @@
     <string name="rowTitle" >row title</string>
     <string name="description" >description</string>
     <string name="uncaughtexception" >UnCaughtException</string>
+    <string name="noconnectivity" >Please check your internet connectivity and Try again.</string>
+
 
 </resources>

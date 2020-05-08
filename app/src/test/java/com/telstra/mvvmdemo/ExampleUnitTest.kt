@@ -1,4 +1,4 @@
-package com.telstra.telstramvvm
+package com.telstra.mvvmdemo
 
 import org.junit.Test
 

@@ -1,15 +1,17 @@
-package com.telstra.telstramvvm.utils
+package com.telstra.mvvmdemo.utils
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
-import com.telstra.telstramvvm.data.model.Facts
-import com.telstra.telstramvvm.data.model.FactsItem
+import com.telstra.mvvmdemo.data.model.Facts
+import com.telstra.mvvmdemo.data.model.FactsItem
 
 /**
- * converter class to convert object
+ * converter class to store the custom type of objects in Database.
  */
 class Converters {
+
     private val gson = Gson()
+
     @TypeConverter
     fun convertTagsListToDb(tags: List<FactsItem>?): String? =
         if (tags != null) gson.toJson(tags) else null

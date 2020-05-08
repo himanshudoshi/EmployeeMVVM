@@ -1,7 +1,10 @@
-package com.telstra.telstramvvm.data.model
+package com.telstra.mvvmdemo.data.model
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * data class for factsItems
+ */
 data class FactsItem(
     @SerializedName("imageHref")
     val imageHref: String? = "",

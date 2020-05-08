@@ -1,4 +1,4 @@
-package com.telstra.telstramvvm.data.model
+package com.telstra.mvvmdemo.data.model
 
 import androidx.room.Entity
 import androidx.room.Ignore
@@ -8,7 +8,8 @@ import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
 
 /**
- * Pojo class
+ * data class for Facts
+ * Entity Class for Room Database
  */
 const val PRIMARY_KEY = 0
 
@@ -23,7 +24,6 @@ data class Facts(
     var id = PRIMARY_KEY
 
     companion object {
-
         @Ignore
         val messageOptionListType: Type = object : TypeToken<List<FactsItem>>() {}.type
     }

@@ -1,13 +1,14 @@
-package com.telstra.telstramvvm.data.network
+package com.telstra.mvvmdemo.data.network
 
-import com.telstra.telstramvvm.data.model.Facts
+import com.telstra.mvvmdemo.data.model.Facts
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 /**
- * Retrofit initialization
+ *  Created Interface for Network Operations
+ *  Created Companion object to Initialize Retrofit
  */
 interface FactsApi {
 
@@ -15,7 +16,6 @@ interface FactsApi {
     suspend fun getData(): Response<Facts>
 
     companion object {
-
         private const val BASE_URL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/"
 
         operator fun invoke(): FactsApi {

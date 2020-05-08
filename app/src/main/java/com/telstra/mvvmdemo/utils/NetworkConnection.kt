@@ -1,4 +1,4 @@
-package com.telstra.telstramvvm.utils
+package com.telstra.mvvmdemo.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -6,7 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 
 /**
- * check Internet Connectivity
+ *  This Class checks Internet Connectivity in the app
  */
 class NetworkConnection {
 

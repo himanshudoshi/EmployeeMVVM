@@ -1,11 +1,11 @@
-package com.telstra.telstramvvm.viewmodel
+package com.telstra.mvvmdemo.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.telstra.telstramvvm.data.repository.FactsRepository
+import com.telstra.mvvmdemo.data.repository.FactsRepository
 
 /**
- * To Pass factsrepository to Viewmodels constructor
+ * The ViewModelFactory class to create instance for ViewModel
  */
 @Suppress("UNCHECKED_CAST")
 class FactsViewModelFactory(private val factsRepository: FactsRepository) :

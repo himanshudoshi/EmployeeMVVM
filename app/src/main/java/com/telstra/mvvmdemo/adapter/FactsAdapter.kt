@@ -1,4 +1,4 @@
-package com.telstra.telstramvvm.adapter
+package com.telstra.mvvmdemo.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,46 +10,45 @@ import kotlinx.android.synthetic.main.item_layout.view.descriptions
 import kotlinx.android.synthetic.main.item_layout.view.imageUrl
 import kotlinx.android.synthetic.main.item_layout.view.rowtitle
 import com.bumptech.glide.Glide
-import com.telstra.telstramvvm.R
-import com.telstra.telstramvvm.data.model.FactsItem
+import com.telstra.mvvmdemo.R
+import com.telstra.mvvmdemo.data.model.FactsItem
 
+/** Class Adapter to populate items */
 class FactsAdapter(private val context: Context) :
     RecyclerView.Adapter<FactsAdapter.FactViewHolder>() {
 
     private var listFactsItem: List<FactsItem> = ArrayList()
 
-    /** @Method initializing view and returning/inflating view  . */
-
+    /**  Adapter class to display data in recyclerview.  */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FactViewHolder {
-
         val view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
         return FactViewHolder(view, context)
     }
 
-    /** @Method return item count . */
+    /** Return item counts of factItems. */
     override fun getItemCount(): Int {
         return listFactsItem.size
     }
 
-    /** @Method data binding in each element . */
+    /** Bind Data to ViewHolder */
     override fun onBindViewHolder(holder: FactViewHolder, position: Int) {
-
         holder.bindView(listFactsItem[position])
     }
 
-    /** @Method set result in list. */
-
+    /** set items in list and update dataset */
     fun setList(items: ArrayList<FactsItem>) {
         listFactsItem = items
         notifyDataSetChanged()
     }
 
-    /** @Method return view holder . */
+    /**
+     * This Class displays FactItems in RecyclerView
+     * Used Glide Library for  Lazy ImageLoading
+     */
     class FactViewHolder(itemView: View, private val context: Context) :
         RecyclerView.ViewHolder(itemView) {
 
         fun bindView(factsItem: FactsItem) {
-
             when {
                 !factsItem.title.isNullOrEmpty() -> itemView.rowtitle.text = factsItem.title
                 else -> itemView.rowtitle.text = context.getString(R.string.noData)
@@ -59,7 +58,6 @@ class FactsAdapter(private val context: Context) :
                     factsItem.description
                 else -> itemView.descriptions.text = context.getString(R.string.noDescription)
             }
-
             val aUrl: String = factsItem.imageHref!!.replace("http", "https")
             when {
                 !factsItem.imageHref.isNullOrEmpty() -> {
@@ -95,6 +93,5 @@ class FactsAdapter(private val context: Context) :
                 }
             }
         }
-
     }
 }

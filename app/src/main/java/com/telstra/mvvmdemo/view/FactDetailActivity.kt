@@ -1,25 +1,26 @@
-package com.telstra.telstramvvm.view
+package com.telstra.mvvmdemo.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.telstra.telstramvvm.R
-import com.telstra.telstramvvm.adapter.FactsAdapter
-import com.telstra.telstramvvm.data.db.FactsDatabase
-import com.telstra.telstramvvm.data.model.FactsItem
-import com.telstra.telstramvvm.data.network.FactsApi
-import com.telstra.telstramvvm.data.repository.FactsRepository
-import com.telstra.telstramvvm.utils.*
-import com.telstra.telstramvvm.viewmodel.FactsViewModel
-import com.telstra.telstramvvm.viewmodel.FactsViewModelFactory
+import com.telstra.mvvmdemo.R
+import com.telstra.mvvmdemo.adapter.FactsAdapter
+import com.telstra.mvvmdemo.data.database.FactsDatabase
+import com.telstra.mvvmdemo.data.model.FactsItem
+import com.telstra.mvvmdemo.data.network.FactsApi
+import com.telstra.mvvmdemo.data.repository.FactsRepository
+import com.telstra.mvvmdemo.utils.*
+import com.telstra.mvvmdemo.viewmodel.FactsViewModel
+import com.telstra.mvvmdemo.viewmodel.FactsViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
-This is Main Activity to display Fact Details
+ * Activity that displays all facts details in Recyclerview in the app
  */
 class FactsDetailActivity : AppCompatActivity() {
+
     private lateinit var factsViewModel: FactsViewModel
     private lateinit var api: FactsApi
     private lateinit var db: FactsDatabase
@@ -31,7 +32,6 @@ class FactsDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setUpUi()
         initViewModel()
         initRecyclerView()
@@ -51,16 +51,7 @@ class FactsDetailActivity : AppCompatActivity() {
     }
 
     /**
-     * Pull To Refresh
-     */
-    private fun onRefresh() {
-        swipeRefreshLayout.setOnRefreshListener {
-            factsViewModel.saveFacts()
-        }
-    }
-
-    /**
-     * ViewModel Initialize
+     * Initialize ViewModel,check connectivity and send data from viewModel to Activity
      */
     private fun initViewModel() {
         factsViewModel = ViewModelProvider(this, factory).get(FactsViewModel::class.java)
@@ -77,7 +68,7 @@ class FactsDetailActivity : AppCompatActivity() {
     }
 
     /**
-     * Recyclerview Initialize
+     * Initialize RecyclerView to display data in screen
      */
     private fun initRecyclerView() {
         linearLayout = LinearLayoutManager(this)
@@ -86,10 +77,20 @@ class FactsDetailActivity : AppCompatActivity() {
         recycler_view.adapter = factsAdapter
     }
 
+    /**
+     * Pull To Refresh functionality to fetch latest data
+     */
+    private fun onRefresh() {
+        swipeRefreshLayout.setOnRefreshListener {
+            factsViewModel.saveFacts()
+        }
+    }
+
+    /**
+     * Subscribe the observers & Load Fact details in UI
+     */
     private fun subscribeObserver() {
-        /**
-         * Subscribe the observers & Load Fact details in UI
-         */
+
         factsViewModel.getFactsFromDb().observe(this, Observer { it ->
 
             it?.let { it ->
@@ -100,8 +101,6 @@ class FactsDetailActivity : AppCompatActivity() {
                     swipeRefreshLayout.isRefreshing = false
                 }
             }
-
         })
     }
-
 }

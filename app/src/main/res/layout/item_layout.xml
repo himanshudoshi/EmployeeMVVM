@@ -21,7 +21,7 @@
         android:padding="@dimen/size_16">
 
         <TextView
-            android:id="@+id/rowtitle"
+            android:id="@+id/ename"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
             android:text="@string/rowTitle"
@@ -32,23 +32,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/descriptions"
+            android:id="@+id/salary"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
             android:text="@string/description"
             android:textSize="@dimen/size_16"
             app:layout_constraintEnd_toStartOf="@id/imageUrl"
-            app:layout_constraintStart_toStartOf="@id/rowtitle"
-            app:layout_constraintTop_toBottomOf="@id/rowtitle" />
+            app:layout_constraintStart_toStartOf="@id/ename"
+            app:layout_constraintTop_toBottomOf="@id/ename" />
 
+        <TextView
+            android:id="@+id/age"
+            android:layout_width="@dimen/no_dp"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintEnd_toStartOf="@id/imageUrl"
+            app:layout_constraintStart_toStartOf="@id/salary"
+            app:layout_constraintTop_toBottomOf="@id/salary" />
         <ImageView
             android:id="@+id/imageUrl"
             android:layout_width="@dimen/size_150"
             android:layout_height="@dimen/size_100"
             android:scaleType="fitCenter"
             app:layout_constraintEnd_toStartOf="@id/arrowIcon"
-            app:layout_constraintStart_toEndOf="@id/descriptions"
-            app:layout_constraintTop_toTopOf="@id/descriptions" />
+            app:layout_constraintStart_toEndOf="@id/salary"
+            app:layout_constraintTop_toTopOf="@id/salary" />
 
         <ImageView
             android:id="@+id/arrowIcon"
@@ -58,7 +67,7 @@
             android:src="@drawable/arrow_right"
             app:layout_constraintBottom_toBottomOf="@id/imageUrl"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/rowtitle"
+            app:layout_constraintTop_toTopOf="@id/ename"
             android:layout_marginStart="@dimen/size_10" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

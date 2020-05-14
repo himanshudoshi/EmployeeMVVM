@@ -18,13 +18,14 @@ interface EmployeesApi {
 
     @GET("employees")
     suspend fun getData(): Response<Employees>
-@FormUrlEncoded
+
+    @FormUrlEncoded
     @POST("create")
     suspend fun createUser(
-        @Field("name") name:String,
-        @Field("salary") salary:Int,
-        @Field("age") age:Int
-    ):Response<EmployeesDetails>
+        @Field("name") name: String,
+        @Field("salary") salary: Int,
+        @Field("age") age: Int
+    ): Response<EmployeesDetails>
 
     companion object {
         private const val BASE_URL = "http://dummy.restapiexample.com/api/v1/"

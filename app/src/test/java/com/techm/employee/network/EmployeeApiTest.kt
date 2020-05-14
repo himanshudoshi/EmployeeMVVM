@@ -12,6 +12,9 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
+/**
+ *  This class Test Employee Api
+ */
 class EmployeeApiTest {
 
     private lateinit var employeesApi: EmployeesApi
@@ -22,25 +25,23 @@ class EmployeeApiTest {
         employeesApi = mockk()
     }
 
+    /** Call Network Request and fetch Response */
     @Test
     fun `GIVEN interface WHEN calling Employees detail api THEN Employees response`() {
         // Given
-        coEvery{ employeesApi.getData()} returns getData()
-
+        coEvery { employeesApi.getData() } returns getData()
         // When
         runBlocking { employeesApi.getData() }
-
         // Then
         coVerify { employeesApi.getData() }
     }
 
-    fun getData() : Response<Employees> {
+    fun getData(): Response<Employees> {
         val status = "success"
-        val list : MutableList<EmployeesDetails> = mutableListOf()
-        list.add(EmployeesDetails("1", "Himanshu", 7654,34,""))
-        return Response.success(Employees(status,list))
+        val list: MutableList<EmployeesDetails> = mutableListOf()
+        list.add(EmployeesDetails("1", "Himanshu", 7654, 34, ""))
+        return Response.success(Employees(status, list))
     }
-
 }
 
 

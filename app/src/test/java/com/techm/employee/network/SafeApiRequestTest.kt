@@ -13,6 +13,7 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
 
+/** Api Request Test */
 class SafeApiRequestTest {
     private lateinit var employeesApi: EmployeesApi
     private lateinit var safeApiRequest: SafeApiRequest
@@ -21,20 +22,17 @@ class SafeApiRequestTest {
     fun setup() {
         MockKAnnotations.init(this)
         safeApiRequest = mockk()
-        employeesApi = mockk<EmployeesApi>()
+        employeesApi = mockk()
     }
-
+/**  ApiRequest call and response returned */
     @Test
-    fun `GIVEN api executer WHEN executer call api THEN api response returned`() {
+    fun `GIVEN safe api request WHEN request call api THEN api response returned`() {
         // Given
         val sampleMock = mockk<suspend () -> Response<Employees>>()
-        coEvery{ safeApiRequest.apiRequest(sampleMock)}.answers { ApiResponse.getSampleResponse() }
-
+        coEvery { safeApiRequest.apiRequest(sampleMock) }.answers { ApiResponse.getSampleResponse() }
         // When
-        runBlocking {
-            safeApiRequest.apiRequest(sampleMock)
+        runBlocking { safeApiRequest.apiRequest(sampleMock)
         }
-
         // Then
         coVerify { safeApiRequest.apiRequest(sampleMock) }
     }

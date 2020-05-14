@@ -2,6 +2,8 @@ package com.techm.employee.adapter
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.techm.employee.data.model.EmployeesDetails
+import junit.framework.TestCase.assertEquals
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -14,10 +16,8 @@ import org.junit.runner.RunWith
 class EmployeesAdapterTest {
 
     private lateinit var employeesAdapter: EmployeesAdapter
-
-    //val one = EmployeesDetails("one", "one", one)
-    // val two = FactsItem("two", "two", "two")
-    // val three = FactsItem("three", "three", "three")
+    val one = EmployeesDetails("", "", 323.toInt(), 45.toInt(), "")
+    val two = EmployeesDetails("", "", 223.toInt(), 55.toInt(), "")
 
     /** SetUp Employee Adapter */
     @Before
@@ -34,8 +34,8 @@ class EmployeesAdapterTest {
     /** Function to Check Item at particular position */
     @Test
     fun checkItemAtPosition() {
-        //  val sample = FactsItem("one", "one", "one")
-        //  assertEquals(sample, one)
-        // Assert.assertNotEquals(sample, two)
+        val sample = EmployeesDetails("one", "one", 323, 45, "")
+        assertEquals(sample, one)
+        Assert.assertNotEquals(sample, two)
     }
 }

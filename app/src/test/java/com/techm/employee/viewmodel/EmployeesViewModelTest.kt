@@ -14,10 +14,11 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 
+/** EmployeeViewModel to test Business Logic */
 class EmployeesViewModelTest {
+
     @RelaxedMockK
     private lateinit var repository: EmployeesRepository
-
     private val mainThreadSurrogate = newSingleThreadContext("UI thread")
 
     @Before
@@ -32,19 +33,18 @@ class EmployeesViewModelTest {
         mainThreadSurrogate.close()
     }
 
+    /** Send Api Request and check Response */
     @Test
     fun `GIVEN viewmodel WHEN Employees api request THEN Employee Detail field should have values`() {
         runBlocking {
             launch(Dispatchers.Main) {
                 // Given
                 val viewmodel = EmployeesViewModel(repository)
-
                 // WHEN
                 val result = viewmodel.saveEmployees()
-
                 // Then
                 assertNotNull(result)
             }
         }
     }
-  }
+}

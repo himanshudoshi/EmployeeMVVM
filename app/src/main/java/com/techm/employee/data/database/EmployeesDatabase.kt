@@ -6,14 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.techm.employee.data.model.Employees
-import com.techm.employee.data.model.EmployeesDetails
 import com.techm.employee.utils.Converters
 
 /**
  * Room Database creation and singleton for Employees Class
  */
-@Database(entities = [Employees::class],
-    version = 1, exportSchema = false)
+@Database(
+    entities = [Employees::class],
+    version = 1, exportSchema = false
+)
 @TypeConverters(Converters::class)
 abstract class EmployeesDatabase : RoomDatabase() {
 

@@ -31,8 +31,8 @@ class EmployeesRepository(
     }
 
     /** Fetch a list of Employees from the Network. */
-    suspend fun createEmployeeToNetwork(name:String,salary:Int,age:Int): EmployeesDetails {
-        return apiRequest { employeesApi.createUser(name,salary,age) }
+    suspend fun createEmployeeToNetwork(name: String, salary: Int, age: Int): EmployeesDetails {
+        return apiRequest { employeesApi.createUser(name, salary, age) }
     }
 
 }

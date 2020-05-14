@@ -12,6 +12,9 @@
     <string name="somethingwentwrong" >somethingwentwrong</string>
     <string name="noconnectivity" >Please check your internet connectivity and Try again.</string>
     <string name="enter_search_term">Enter search term</string>
+    <string name="validatename">Enter name</string>
+    <string name="validateage">Enter age</string>
+    <string name="validatesalary">Enter salary</string>
 
 
 </resources>

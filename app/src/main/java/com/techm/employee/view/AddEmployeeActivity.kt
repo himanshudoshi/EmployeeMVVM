@@ -1,6 +1,7 @@
 package com.techm.employee.view
 
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -16,9 +17,10 @@ import com.techm.employee.viewmodel.EmployeesViewModel
 import com.techm.employee.viewmodel.EmployeesViewModelFactory
 
 /**
- * Activity that Create Employee
+ * Activity that Add Employee Details
  */
 class AddEmployeeActivity : AppCompatActivity() {
+
     private lateinit var btnRegister: Button
     private lateinit var etName: EditText
     private lateinit var etAge: EditText
@@ -28,15 +30,16 @@ class AddEmployeeActivity : AppCompatActivity() {
     private lateinit var database: EmployeesDatabase
     private lateinit var employeesRepository: EmployeesRepository
     private lateinit var factory: EmployeesViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
         etName = findViewById(R.id.etName)
-        etAge = findViewById(R.id.etName)
+        etAge = findViewById(R.id.etAge)
         etSalary = findViewById(R.id.etSalary)
+        btnRegister = findViewById<Button>(R.id.btnRegister)
         setUpUi()
         initViewModel()
-        btnRegister = findViewById<Button>(R.id.btnRegister)
         btnRegister.setOnClickListener {
             validation()
             initViewModel()
@@ -45,6 +48,14 @@ class AddEmployeeActivity : AppCompatActivity() {
                 getString(R.string.addemployeedetails),
                 Toast.LENGTH_SHORT
             )?.show()
+
+            val myHandler = Handler()
+            val myRun = Runnable {
+                etName.text.clear()
+                etAge.text.clear()
+                etSalary.text.clear()
+            }
+            myHandler.postDelayed(myRun, 3000);
         }
     }
 
@@ -56,6 +67,7 @@ class AddEmployeeActivity : AppCompatActivity() {
         factory = EmployeesViewModelFactory(employeesRepository)
     }
 
+    /** Initialize ViewModel,check connectivity and send data from viewModel to Activity. */
     private fun initViewModel() {
         employeesViewModel = ViewModelProvider(this, factory).get(EmployeesViewModel::class.java)
         // show data from Viewmodel to UI
@@ -65,29 +77,25 @@ class AddEmployeeActivity : AppCompatActivity() {
             }
             else -> {
                 toast(getString(R.string.noconnectivity))
-                //progressBar.hide()
             }
         }
     }
 
+    /** EditTexts Validations */
     private fun validation() {
         val name = etName.text.toString()
         val age = etAge.text.toString()
         val salary = etSalary.text.toString()
         when {
             name == "" -> {
-                etName.error = "Enter name"
+                etName.error = getString(R.string.validatename)
             }
             age == "" -> {
-                etAge.error = "Enter age"
+                etAge.error = getString(R.string.validateage)
             }
             salary == "" -> {
-                etSalary.error = "Enter salary"
+                etSalary.error = getString(R.string.validatesalary)
             }
-            /*else -> {
-                val empAge = age.toInt()
-                val empSalary = salary.toFloat()
-            }*/
         }
     }
 }

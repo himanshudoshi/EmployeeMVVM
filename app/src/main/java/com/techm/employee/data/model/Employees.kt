@@ -16,9 +16,9 @@ const val PRIMARY_KEY = 0
 @Entity
 data class Employees(
     @SerializedName("status")
-    val status:String  = "",
+    val status: String = "",
     @SerializedName("data")
-    val data : List<EmployeesDetails>
+    val data: List<EmployeesDetails>
 ) {
 
     @PrimaryKey(autoGenerate = true)

@@ -3,20 +3,17 @@ package com.techm.employee.view
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.techm.employee.R
 import com.techm.employee.data.database.EmployeesDatabase
-import com.techm.employee.data.model.EmployeesDetails
 import com.techm.employee.data.network.EmployeesApi
 import com.techm.employee.data.repository.EmployeesRepository
 import com.techm.employee.utils.NetworkConnection
-import com.techm.employee.utils.hide
 import com.techm.employee.utils.toast
 import com.techm.employee.viewmodel.EmployeesViewModel
 import com.techm.employee.viewmodel.EmployeesViewModelFactory
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Activity that Create Employee
@@ -39,11 +36,15 @@ class AddEmployeeActivity : AppCompatActivity() {
         etSalary = findViewById(R.id.etSalary)
         setUpUi()
         initViewModel()
-        //subscribeObserver()
         btnRegister = findViewById<Button>(R.id.btnRegister)
         btnRegister.setOnClickListener {
-            // subscribeObserver()
-            //initViewModel()
+            validation()
+            initViewModel()
+            Toast.makeText(
+                applicationContext,
+                getString(R.string.addemployeedetails),
+                Toast.LENGTH_SHORT
+            )?.show()
         }
     }
 
@@ -69,21 +70,7 @@ class AddEmployeeActivity : AppCompatActivity() {
         }
     }
 
-    /** Subscribe the observers & Load Employee details in UI. */
-    private fun subscribeObserver() {
-
-        employeesViewModel.getFactsFromDb().observe(this, Observer { it ->
-
-            it?.let { it ->
-                //supportActionBar?.title = it.title
-                it.data?.let {
-
-                }
-            }
-        })
-    }
-
-    private fun register() {
+    private fun validation() {
         val name = etName.text.toString()
         val age = etAge.text.toString()
         val salary = etSalary.text.toString()
@@ -97,10 +84,10 @@ class AddEmployeeActivity : AppCompatActivity() {
             salary == "" -> {
                 etSalary.error = "Enter salary"
             }
-            else -> {
+            /*else -> {
                 val empAge = age.toInt()
                 val empSalary = salary.toFloat()
-            }
+            }*/
         }
     }
 }

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.techm.employee.R
 import com.techm.employee.data.model.EmployeesDetails
-import com.techm.employee.view.EmployeeDetailsActivity
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 /** Class Adapter to populate items */

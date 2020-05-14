@@ -2,8 +2,13 @@
     <string name="app_name">EmployeeMVVM</string>
     <string name="noData">No Data</string>
     <string name="noDescription">No Description</string>
-    <string name="rowTitle" >row title</string>
+    <string name="ename" >employee name</string>
     <string name="description" >description</string>
+    <string name="age" >age</string>
+    <string name="salary" >salary</string>
+
+    <string name="addemployeedetails" >Employee Data Successfully Added.</string>
+
     <string name="somethingwentwrong" >somethingwentwrong</string>
     <string name="noconnectivity" >Please check your internet connectivity and Try again.</string>
     <string name="enter_search_term">Enter search term</string>

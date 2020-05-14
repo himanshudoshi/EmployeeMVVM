@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card_gradient">
@@ -24,20 +25,20 @@
             android:id="@+id/ename"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
-            android:text="@string/rowTitle"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/ename"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/txt_Size_20"
-            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="@dimen/txt_Size_22"
+            app:layout_constraintStart_toEndOf="@id/imageUrl"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/salary"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
-            android:text="@string/description"
-            android:textSize="@dimen/size_16"
-            app:layout_constraintEnd_toStartOf="@id/imageUrl"
+            android:text="@string/salary"
+            android:textSize="@dimen/txt_Size_20"
             app:layout_constraintStart_toStartOf="@id/ename"
             app:layout_constraintTop_toBottomOf="@id/ename" />
 
@@ -45,30 +46,26 @@
             android:id="@+id/age"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
-            android:text="@string/description"
-            android:textSize="@dimen/size_16"
-            app:layout_constraintEnd_toStartOf="@id/imageUrl"
+            android:text="@string/age"
+            android:textSize="@dimen/txt_Size_20"
             app:layout_constraintStart_toStartOf="@id/salary"
             app:layout_constraintTop_toBottomOf="@id/salary" />
+
         <ImageView
             android:id="@+id/imageUrl"
             android:layout_width="@dimen/size_150"
             android:layout_height="@dimen/size_100"
             android:scaleType="fitCenter"
-            app:layout_constraintEnd_toStartOf="@id/arrowIcon"
-            app:layout_constraintStart_toEndOf="@id/salary"
-            app:layout_constraintTop_toTopOf="@id/salary" />
+            tools:layout_editor_absoluteX="-15dp"
+            tools:layout_editor_absoluteY="24dp" />
 
         <ImageView
             android:id="@+id/arrowIcon"
             android:layout_width="@dimen/size_28"
             android:layout_height="@dimen/size_28"
-            android:layout_marginLeft="@dimen/size_10"
             android:src="@drawable/arrow_right"
-            app:layout_constraintBottom_toBottomOf="@id/imageUrl"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ename"
-            android:layout_marginStart="@dimen/size_10" />
+            tools:layout_editor_absoluteY="60dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

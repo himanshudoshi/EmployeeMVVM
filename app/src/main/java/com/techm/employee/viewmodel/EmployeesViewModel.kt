@@ -45,11 +45,11 @@ class EmployeesViewModel(private val employeesRepository: EmployeesRepository) :
     /** Add List of Employee. */
     fun addEmployee() {
         Coroutines.main {
-            val addemployeeResponse: Employees =
+            val addemployeeResponse: EmployeesDetails =
                 employeesRepository.createEmployeeToNetwork("test", 123, 23)
             try {
                 addemployeeResponse.let {
-                    employeesRepository.saveEmployees(it)
+                    //employeesRepository.saveEmployees(it)
                 }
 
             } catch (e: ApiException) {

@@ -1,4 +1,4 @@
-package com.telstra.mvvmdemo.utils
+package com.techm.employee.utils
 
 
 import org.junit.Test

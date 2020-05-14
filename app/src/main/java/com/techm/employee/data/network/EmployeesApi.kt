@@ -5,7 +5,10 @@ import com.techm.employee.data.model.EmployeesDetails
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.*
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 /**
  *  Created Interface for Network Operations
@@ -21,7 +24,7 @@ interface EmployeesApi {
         @Field("name") name:String,
         @Field("salary") salary:Int,
         @Field("age") age:Int
-    ):Response<Employees>
+    ):Response<EmployeesDetails>
 
     companion object {
         private const val BASE_URL = "http://dummy.restapiexample.com/api/v1/"

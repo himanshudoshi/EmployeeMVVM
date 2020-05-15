@@ -9,16 +9,16 @@ import com.techm.employee.data.repository.EmployeesRepository
 import com.techm.employee.utils.ApiException
 import com.techm.employee.utils.Coroutines
 import com.techm.employee.utils.NoInternetException
-import kotlin.properties.Delegates
 
 /**
  *  The ViewModel for fetching a list of Employees.
  */
 class EmployeesViewModel(private val employeesRepository: EmployeesRepository) : ViewModel() {
 
-    private lateinit var name: String
-    private var age by Delegates.notNull<Int>()
-    private var salary by Delegates.notNull<Int>()
+    private  var name: String = "test"
+    private var age =23
+    private var salary =123
+    private var id =2
 
     /** Fetch List of Employees from Network using Coroutines. */
     fun saveEmployees() {
@@ -42,16 +42,40 @@ class EmployeesViewModel(private val employeesRepository: EmployeesRepository) :
     fun getEmployeesFromDatabase(): LiveData<Employees> =
         employeesRepository.getEmployeesFromDatabase()
 
-    /** Add List of Employee. */
+    /** Add Employee to the Network */
     fun addEmployee() {
         Coroutines.main {
             val addemployeeResponse: EmployeesDetails =
-                employeesRepository.createEmployeeToNetwork("test", 123, 23)
+                employeesRepository.createEmployeeToNetwork(name,salary,age)
             try {
                 addemployeeResponse.let {
+                    Log.e(
+                        "Add Employee",
+                        "Add Employee$addemployeeResponse"
+                    )
                     //employeesRepository.saveEmployees(it)
                 }
 
+            } catch (e: ApiException) {
+                Log.e("Exception", "Exception" + e.printStackTrace())
+
+            } catch (e: NoInternetException) {
+                Log.e("Internet Exception", "No Internet Exception" + e.printStackTrace())
+            }
+        }
+    }
+
+    /** Delete Employee from the Network by Employe Id */
+    fun deleteEmployee(removeAt: Unit) {
+        Coroutines.main {
+            val deleteEmployeeResponse =employeesRepository.DeleteEmployeeToNetwork(id)
+            try {
+                deleteEmployeeResponse.let {
+                    Log.e(
+                        "Delete Employee",
+                        "Delete Employee"+ deleteEmployeeResponse.message
+                    )
+                }
             } catch (e: ApiException) {
                 Log.e("Exception", "Exception" + e.printStackTrace())
 

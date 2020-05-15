@@ -1,14 +1,12 @@
 package com.techm.employee.data.network
 
+import com.techm.employee.data.model.DeleteEmployeeResponse
 import com.techm.employee.data.model.Employees
 import com.techm.employee.data.model.EmployeesDetails
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 /**
  *  Created Interface for Network Operations
@@ -27,8 +25,12 @@ interface EmployeesApi {
         @Field("age") age: Int
     ): Response<EmployeesDetails>
 
+    @DELETE("delete/{id}")
+    suspend fun deleteUser(@Path("id") id : Int) : Response<DeleteEmployeeResponse>
+
     companion object {
-        private const val BASE_URL = "http://dummy.restapiexample.com/api/v1/"
+
+        const val BASE_URL = "http://dummy.restapiexample.com/api/v1/"
 
         operator fun invoke(): EmployeesApi {
             return Retrofit.Builder()

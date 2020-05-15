@@ -2,6 +2,7 @@ package com.techm.employee.data.repository
 
 import androidx.lifecycle.LiveData
 import com.techm.employee.data.database.EmployeesDatabase
+import com.techm.employee.data.model.DeleteEmployeeResponse
 import com.techm.employee.data.model.Employees
 import com.techm.employee.data.model.EmployeesDetails
 import com.techm.employee.data.network.EmployeesApi
@@ -30,9 +31,14 @@ class EmployeesRepository(
         employeesDatabase.getEmployeesDao().insert(employees)
     }
 
-    /** Fetch a list of Employees from the Network. */
+    /** create Employee and send to the Network. */
     suspend fun createEmployeeToNetwork(name: String, salary: Int, age: Int): EmployeesDetails {
         return apiRequest { employeesApi.createUser(name, salary, age) }
+    }
+
+   /** Delete Employee by Id */
+    suspend fun DeleteEmployeeToNetwork(id:Int): DeleteEmployeeResponse {
+        return apiRequest { employeesApi.deleteUser(id)}
     }
 
 }

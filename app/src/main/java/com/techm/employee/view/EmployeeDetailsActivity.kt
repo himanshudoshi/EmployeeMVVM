@@ -91,8 +91,15 @@ class EmployeeDetailsActivity : AppCompatActivity() {
     private fun swipeToDelete() {
         val swipeHandler = object : SwipeToDeleteCallback(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                recycler_view.adapter as EmployeesAdapter
-                (recycler_view.adapter as EmployeesAdapter).removeAt(viewHolder.adapterPosition)
+                // show data from Viewmodel to UI
+                when {
+                    NetworkConnection().checkNetworkAvailability(applicationContext) -> {
+                        employeesViewModel.deleteEmployee((recycler_view.adapter as EmployeesAdapter).removeAt(viewHolder.adapterPosition))
+                    }
+                    else -> {
+                        toast(getString(R.string.noconnectivity))
+                    }
+                }
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)

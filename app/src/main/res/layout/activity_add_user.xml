@@ -8,6 +8,7 @@
     tools:context=".view.AddEmployeeActivity">
 
     <TextView
+        android:id="@+id/tvaddemployee"
         android:text="Add Employee"
         android:gravity="center"
         android:layout_marginTop="25dp"

@@ -6,32 +6,19 @@
     android:layout_height="wrap_content"
     android:background="@drawable/card_gradient">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_grey"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/size_10"
         android:padding="@dimen/size_16">
 
         <TextView
             android:id="@+id/ename"
             android:layout_width="@dimen/no_dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:text="@string/ename"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/txt_Size_22"
-            app:layout_constraintStart_toEndOf="@id/imageUrl"
-            tools:layout_editor_absoluteY="16dp" />
+            app:layout_constraintStart_toEndOf="@id/imageUrl" />
 
         <TextView
             android:id="@+id/salary"
@@ -44,7 +31,7 @@
 
         <TextView
             android:id="@+id/age"
-            android:layout_width="@dimen/no_dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/age"
             android:textSize="@dimen/txt_Size_20"
@@ -55,9 +42,7 @@
             android:id="@+id/imageUrl"
             android:layout_width="@dimen/size_150"
             android:layout_height="@dimen/size_100"
-            android:scaleType="fitCenter"
-            tools:layout_editor_absoluteX="-15dp"
-            tools:layout_editor_absoluteY="24dp" />
+            app:layout_constraintEnd_toStartOf="@+id/ename" />
 
         <ImageView
             android:id="@+id/arrowIcon"
@@ -65,7 +50,8 @@
             android:layout_height="@dimen/size_28"
             android:src="@drawable/arrow_right"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteY="60dp" />
+            tools:layout_editor_absoluteY="50dp"
+            tools:layout_editor_absoluteYX="50dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

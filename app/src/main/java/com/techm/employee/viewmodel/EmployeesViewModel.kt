@@ -39,8 +39,8 @@ class EmployeesViewModel(private val employeesRepository: EmployeesRepository) :
     }
 
     /** Fetch List of Employees from database. */
-    fun getFactsFromDb(): LiveData<Employees> =
-        employeesRepository.getFactsFromDb()
+    fun getEmployeesFromDatabase(): LiveData<Employees> =
+        employeesRepository.getEmployeesFromDatabase()
 
     /** Add List of Employee. */
     fun addEmployee() {

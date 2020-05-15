@@ -21,7 +21,7 @@ class EmployeesRepository(
     }
 
     /** Fetch a list of Employees from the database. */
-    fun getFactsFromDb(): LiveData<Employees> {
+    fun getEmployeesFromDatabase(): LiveData<Employees> {
         return employeesDatabase.getEmployeesDao().getFacts()
     }
 

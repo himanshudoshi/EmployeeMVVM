@@ -21,6 +21,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+
 /**
  * Instrumentation Test for EmployeeDetailsActivity
  */
@@ -135,6 +136,11 @@ class EmployeesDetailActivityTest {
         Assert.assertNotSame(0, recyclerView.adapter?.itemCount)
     }
 
+    @Test
+    fun testAddMenuButtonIsDisplayed() {
+        onView(withId(R.id.add_user)).perform(click())
+        onView(withId(R.id.tvaddemployee)).check(matches(isDisplayed()))
+           }
     @After
     fun testDone() {
         mActivity = null

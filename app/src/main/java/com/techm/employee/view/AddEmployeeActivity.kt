@@ -1,7 +1,6 @@
 package com.techm.employee.view
 
 import android.os.Bundle
-import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -43,19 +42,13 @@ class AddEmployeeActivity : AppCompatActivity() {
         btnRegister.setOnClickListener {
             validation()
             initViewModel()
-            Toast.makeText(
-                applicationContext,
-                getString(R.string.addemployeedetails),
-                Toast.LENGTH_SHORT
-            )?.show()
-
-            val myHandler = Handler()
-            val myRun = Runnable {
-                etName.text.clear()
-                etAge.text.clear()
-                etSalary.text.clear()
-            }
-            myHandler.postDelayed(myRun, 3000);
+          // val myHandler = Handler()
+          //  val myRun = Runnable {
+           //     etName.text.clear()
+           //     etAge.text.clear()
+            //    etSalary.text.clear()
+          //  }
+           // myHandler.postDelayed(myRun, 2000);
         }
     }
 
@@ -74,6 +67,11 @@ class AddEmployeeActivity : AppCompatActivity() {
         when {
             NetworkConnection().checkNetworkAvailability(applicationContext) -> {
                 employeesViewModel.addEmployee()
+                Toast.makeText(
+                    applicationContext,
+                    getString(R.string.addemployeedetails),
+                    Toast.LENGTH_SHORT
+                )?.show()
             }
             else -> {
                 toast(getString(R.string.noconnectivity))
@@ -96,6 +94,7 @@ class AddEmployeeActivity : AppCompatActivity() {
             salary == "" -> {
                 etSalary.error = getString(R.string.validatesalary)
             }
+
         }
     }
 }

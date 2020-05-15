@@ -13,7 +13,7 @@ class Converters {
     private val gson = Gson()
 
     @TypeConverter
-    fun convertTagsListToDb(tags: List<EmployeesDetails>?): String? =
+    fun convertTagsListToDatabase(tags: List<EmployeesDetails>?): String? =
         if (tags != null) gson.toJson(tags) else null
 
     @TypeConverter

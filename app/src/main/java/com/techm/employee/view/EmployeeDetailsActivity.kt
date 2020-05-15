@@ -102,7 +102,7 @@ class EmployeeDetailsActivity : AppCompatActivity() {
     /** Subscribe the observers & Load Employee details in UI. */
     private fun subscribeObserver() {
 
-        employeesViewModel.getFactsFromDb().observe(this, Observer { it ->
+        employeesViewModel.getEmployeesFromDatabase().observe(this, Observer { it ->
 
             it?.let { it ->
                 //supportActionBar?.title = it.title
@@ -119,20 +119,22 @@ class EmployeeDetailsActivity : AppCompatActivity() {
      * Created Option Menu and added ADD and Search Items
      * Added SearchView Functionality to Search Specific Item in RecyclerView
      **/
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         val search = menu!!.findItem(R.id.search)
         val searchView = MenuItemCompat.getActionView(search) as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                //  employeesAdapter.notifyDataSetChanged()
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
+              /*  if (TextUtils.isEmpty(newText))
+                    employeesAdapter.notifyDataSetChanged()*/
                 employeesAdapter.filter?.filter(newText)
                 Log.e("newText", "newText" + newText)
-                employeesAdapter.notifyDataSetChanged()
+                // employeesAdapter.notifyDataSetChanged()
                 return false
             }
         })

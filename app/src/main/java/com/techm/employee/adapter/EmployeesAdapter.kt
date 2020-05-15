@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide
 import com.techm.employee.R
 import com.techm.employee.data.model.EmployeesDetails
 import kotlinx.android.synthetic.main.item_layout.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 /** Class Adapter to populate items */
 class EmployeesAdapter(private val context: Context) :
@@ -22,11 +24,10 @@ class EmployeesAdapter(private val context: Context) :
     private var listFilteredEmployeesDetails = ArrayList<EmployeesDetails>()
     private var items: MutableList<String>? = null
 
-    init {
-        listEmployeesDetails = listEmployeesDetails;
+  /*  init {
         listFilteredEmployeesDetails = listEmployeesDetails;
     }
-
+*/
     /**  Adapter class to display data in recyclerview.  */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeesViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_layout, parent, false)
@@ -49,12 +50,13 @@ class EmployeesAdapter(private val context: Context) :
         notifyDataSetChanged()
     }
 
-    /** Add items in list  for SwipeToDelete functionality and update dataset */
+    /* */
+    /** Add items in list  for SwipeToDelete functionality and update dataset *//*
     fun addItem(name: String) {
         items?.add(name)
         notifyItemInserted(listEmployeesDetails.size)
     }
-
+*/
     /** Remove items in list  for SwipeToDelete functionality and update dataset */
     fun removeAt(position: Int) {
         items?.removeAt(position)
@@ -68,20 +70,21 @@ class EmployeesAdapter(private val context: Context) :
                 val charString = charSequence.toString()
                 val filteredList: ArrayList<EmployeesDetails> = ArrayList()
                 if (charString.isEmpty()) {
-                    filteredList.addAll(listEmployeesDetails)
-                    notifyDataSetChanged()
+                    listFilteredEmployeesDetails = listEmployeesDetails
+                    Log.e("All List","All List"+listFilteredEmployeesDetails)
+                   // filteredList.addAll(listEmployeesDetails)
                 } else {
                     for (row in listEmployeesDetails) {
-                        if (row.employee_name.toLowerCase()
-                                .contains(charString.toLowerCase())
+                        if (row.employee_name.toLowerCase(Locale.ROOT)
+                                .contains(charString.toLowerCase(Locale.ROOT))
                         ) {
                             filteredList.add(row)
                         }
                     }
-                    listEmployeesDetails = filteredList
+                    listFilteredEmployeesDetails = filteredList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = filteredList
+                filterResults.values = listFilteredEmployeesDetails
                 return filterResults
             }
 
@@ -89,8 +92,8 @@ class EmployeesAdapter(private val context: Context) :
                 charSequence: CharSequence,
                 filterResults: FilterResults
             ) {
-                // listEmployeesDetails.clear()
-                // listEmployeesDetails.add(filterResults.values as EmployeesDetails)
+               //  listEmployeesDetails.clear()
+                // listEmployeesDetails.addAll(filterResults.values as ArrayList<EmployeesDetails>)
                 listEmployeesDetails = filterResults.values as ArrayList<EmployeesDetails>
                 Log.e("Filtered list", "filteredlist$listEmployeesDetails")
                 notifyDataSetChanged()
